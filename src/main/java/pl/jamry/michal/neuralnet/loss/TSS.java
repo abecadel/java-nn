@@ -1,0 +1,15 @@
+package pl.jamry.michal.neuralnet.loss;
+
+import pl.jamry.michal.neuralnet.tensors.Tensor;
+
+public class TSS implements Loss {
+    @Override
+    public Float loss(Tensor predicted, Tensor actual) {
+        return predicted.substract(actual).power(2).sum().get();
+    }
+
+    @Override
+    public Tensor grad(Tensor prediction, Tensor actual) {
+        return prediction.substract(actual).multiply(2);
+    }
+}

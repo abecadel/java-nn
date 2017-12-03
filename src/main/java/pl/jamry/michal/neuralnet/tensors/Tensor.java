@@ -31,6 +31,14 @@ public interface Tensor {
     Tensor multiply(Float f);
 
     /**
+     * Multiply tensor.
+     *
+     * @param tensor the tensor
+     * @return the tensor
+     */
+    Tensor multiply(Tensor tensor);
+
+    /**
      * Divide tensor.
      *
      * @param f the f

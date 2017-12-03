@@ -2,6 +2,9 @@ package pl.jamry.michal.neuralnet.loss;
 
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
+/**
+ * The type Tss.
+ */
 public class TSS implements Loss {
     @Override
     public Float loss(Tensor predicted, Tensor actual) {

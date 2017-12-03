@@ -130,6 +130,27 @@ public interface Tensor {
     }
 
     /**
+     * Tanh tensor.
+     *
+     * @return the tensor
+     */
+    Tensor tanh();
+
+    /**
+     * Sigmoid tensor.
+     *
+     * @return the tensor
+     */
+    Tensor sigmoid();
+
+    /**
+     * Relu tensor.
+     *
+     * @return the tensor
+     */
+    Tensor relu();
+
+    /**
      * Get float.
      *
      * @return the float

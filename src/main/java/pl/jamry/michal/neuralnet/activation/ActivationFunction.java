@@ -13,4 +13,12 @@ public interface ActivationFunction {
      * @return the tensor
      */
     Tensor call(Tensor tensor);
+
+    /**
+     * Call prime tensor.
+     *
+     * @param tensor the tensor
+     * @return the tensor
+     */
+    Tensor callPrime(Tensor tensor);
 }

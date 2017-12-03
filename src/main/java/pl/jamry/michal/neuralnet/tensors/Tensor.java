@@ -187,4 +187,28 @@ public interface Tensor {
      * @return the float
      */
     Float ix(Integer... cords);
+
+    /**
+     * Dimensions integer [ ].
+     *
+     * @return the integer [ ]
+     */
+    Integer[] dimensions();
+
+    /**
+     * Ones tensor.
+     *
+     * @param dimensions the dimensions
+     * @return the tensor
+     */
+    Tensor ones(Integer[] dimensions);
+
+    /**
+     * Ones tensor.
+     *
+     * @return the tensor
+     */
+    default Tensor ones() {
+        return ones(dimensions());
+    }
 }

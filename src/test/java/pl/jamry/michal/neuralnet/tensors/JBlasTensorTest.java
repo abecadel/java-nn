@@ -193,17 +193,44 @@ public class JBlasTensorTest {
 
     @Test
     public void sum() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4},
+                {5, 6}
+        });
+
+        Tensor ret = a.sum();
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{9, 12};
+        assertArraysEqual(expected, returned);
+    }
+
+    @Test
+    public void sumAxis0() {
+        Tensor a = new JBlasTensor(new double[][]{
+                {2, 1},
+                {3, 4},
+                {5, 6}
+        });
+
+        Tensor ret = a.sum(0);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{10, 11};
+        assertArraysEqual(expected, returned);
     }
 
     @Test
     public void sumAxis1() {
-        throw new NotImplementedException();
-    }
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4},
+                {5, 6}
+        });
 
-    @Test
-    public void sumAxis2() {
-        throw new NotImplementedException();
+        Tensor ret = a.sum(1);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{3, 7, 11};
+        assertArraysEqual(expected, returned);
     }
 
     @Test

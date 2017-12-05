@@ -71,7 +71,15 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor sum(int axis) {
-        return null;
+        if (axis == 0) {
+            DoubleMatrix ones = DoubleMatrix.ones(matrix.rows);
+            return new JBlasTensor(matrix.transpose().mmul(ones));
+        } else if (axis == 1) {
+            DoubleMatrix ones = DoubleMatrix.ones(matrix.columns);
+            return new JBlasTensor(matrix.mmul(ones));
+        } else {
+            throw new RuntimeException("Only axis = 0 or 1 supported");
+        }
     }
 
     @Override

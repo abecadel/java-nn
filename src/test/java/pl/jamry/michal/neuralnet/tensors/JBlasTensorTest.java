@@ -53,13 +53,11 @@ public class JBlasTensorTest {
     }
 
     private String arr2str(double[] doubles) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("[");
+        StringBuilder sb = new StringBuilder().append("[");
         for (double d : doubles) {
-            sb.append(d + ", ");
+            sb.append(d).append(", ");
         }
-        sb.append("]");
 
-        return sb.toString();
+        return sb.append("]").toString();
     }
 }

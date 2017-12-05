@@ -89,7 +89,8 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor sigmoid() {
-        return null;
+        DoubleMatrix ones = DoubleMatrix.ones(matrix.rows, matrix.columns);
+        return new JBlasTensor(ones.divi(MatrixFunctions.exp(matrix.mul(-1)).add(1)));
     }
 
     @Override

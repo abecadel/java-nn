@@ -15,25 +15,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.numericalmethod</groupId>
-            <artifactId>suanshu</artifactId>
-            <version>3.5.0</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
         </dependency>
-    </dependencies>
 
-    <repositories>
-        <repository>
-            <id>nm-repo</id>
-            <name>Numerical Method's Maven Repository</name>
-            <url>http://repo.numericalmethod.com/maven/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
+        <dependency>
+            <groupId>org.jblas</groupId>
+            <artifactId>jblas</artifactId>
+            <version>1.2.4</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>

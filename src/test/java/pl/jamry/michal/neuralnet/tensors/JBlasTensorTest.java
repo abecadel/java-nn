@@ -31,12 +31,34 @@ public class JBlasTensorTest {
 
     @Test
     public void multiply() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+        double d = 2;
+
+        Tensor ret = a.multiply(d);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{2, 6, 4, 8};
+        assertArraysEqual(expected, returned);
     }
 
     @Test
     public void multiplyTensor() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+
+        Tensor b = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+
+        Tensor ret = a.multiply(b);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{1, 9, 4, 16};
+        assertArraysEqual(expected, returned);
     }
 
     @Test

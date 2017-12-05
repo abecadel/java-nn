@@ -84,7 +84,7 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor tanh() {
-        return null;
+        return new JBlasTensor(MatrixFunctions.tanh(new DoubleMatrix().copy(matrix)));
     }
 
     @Override

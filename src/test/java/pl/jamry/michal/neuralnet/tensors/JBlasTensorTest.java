@@ -235,7 +235,15 @@ public class JBlasTensorTest {
 
     @Test
     public void tanh() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+
+        Tensor ret = a.tanh();
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{0.7615941559557649, 0.9950547536867305, 0.9640275800758169, 0.999329299739067};
+        assertArraysEqual(expected, returned);
     }
 
     @Test

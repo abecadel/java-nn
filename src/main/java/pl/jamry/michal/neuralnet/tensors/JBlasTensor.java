@@ -110,7 +110,7 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor ones(int[] dimensions) {
-        return null;
+        return new JBlasTensor(DoubleMatrix.ones(dimensions[0], dimensions[1]));
     }
 
     @Override

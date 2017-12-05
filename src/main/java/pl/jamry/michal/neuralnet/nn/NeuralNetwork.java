@@ -3,7 +3,6 @@ package pl.jamry.michal.neuralnet.nn;
 import pl.jamry.michal.neuralnet.layers.Layer;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -42,9 +41,9 @@ public class NeuralNetwork {
      * @return the tensor
      */
     public Tensor backward(Tensor grad) {
-        Collections.reverse(layers);
-        for (Layer layer : layers) {
-            grad = layer.backward(grad);
+        for (int i = layers.size() - 1; i >= 0; i--) {
+            Layer layer = layers.get(i);
+            layer.backward(grad);
         }
 
         return grad;

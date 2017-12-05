@@ -27,6 +27,10 @@ public class SGD implements Optimizer {
             Tensor biases = layer.getBias();
             Tensor biasesGrads = layer.getBiasGrad();
 
+            if (weights == null){
+                continue;
+            }
+
             weights = weights.substract(weightsGrads.multiply(learning_rate));
             biases = biases.substract(biasesGrads.multiply(learning_rate));
 

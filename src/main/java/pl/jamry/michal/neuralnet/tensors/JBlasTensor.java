@@ -150,4 +150,9 @@ public class JBlasTensor implements Tensor {
     public Object getData() {
         return matrix;
     }
+
+    @Override
+    public String toString() {
+        return matrix.toString();
+    }
 }

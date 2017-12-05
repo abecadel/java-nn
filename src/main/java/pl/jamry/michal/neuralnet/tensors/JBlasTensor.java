@@ -3,15 +3,36 @@ package pl.jamry.michal.neuralnet.tensors;
 import org.jblas.DoubleMatrix;
 import org.jblas.MatrixFunctions;
 
+/**
+ * The type J blas tensor.
+ */
 public class JBlasTensor implements Tensor {
     private DoubleMatrix matrix;
 
+    /**
+     * Instantiates a new J blas tensor.
+     *
+     * @param doubles the doubles
+     */
     public JBlasTensor(double[][] doubles) {
         matrix = new DoubleMatrix(doubles);
     }
 
+    /**
+     * Instantiates a new J blas tensor.
+     *
+     * @param matrix the matrix
+     */
     public JBlasTensor(DoubleMatrix matrix) {
         this.matrix = matrix;
+    }
+
+    public static Tensor randr(int size) {
+        return new JBlasTensor(DoubleMatrix.randn(size));
+    }
+
+    public static Tensor randr(int rows, int cols) {
+        return new JBlasTensor(DoubleMatrix.randn(rows, cols));
     }
 
     @Override
@@ -46,7 +67,19 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor add(Tensor tensor) {
-        return new JBlasTensor(matrix.add((DoubleMatrix) tensor.getData()));
+        DoubleMatrix other = (DoubleMatrix) tensor.getData();
+
+        //simple column broadcasting
+        if (matrix.columns != other.columns && other.columns == 1) {
+            DoubleMatrix broadcastedOther = new DoubleMatrix().copy(other);
+            for (int i = 0; i <= matrix.columns; i++) {
+                broadcastedOther = DoubleMatrix.concatHorizontally(broadcastedOther, other);
+            }
+
+            other = broadcastedOther;
+        }
+
+        return new JBlasTensor(matrix.add(other));
     }
 
     @Override

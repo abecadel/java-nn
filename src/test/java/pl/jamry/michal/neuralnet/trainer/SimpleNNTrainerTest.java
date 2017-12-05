@@ -1,6 +1,5 @@
 package pl.jamry.michal.neuralnet.trainer;
 
-import org.jblas.DoubleMatrix;
 import org.junit.Test;
 import pl.jamry.michal.neuralnet.layers.Layer;
 import pl.jamry.michal.neuralnet.layers.LinearLayer;
@@ -19,9 +18,9 @@ public class SimpleNNTrainerTest {
     public void xorTooSmall() {
 
         NeuralNetwork neuralNetwork = new NeuralNetwork(new ArrayList<Layer>() {{
-            add(new LinearLayer(new JBlasTensor(DoubleMatrix.randn(2, 2)), new JBlasTensor(DoubleMatrix.randn(2))));
+            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
             add(new TanhActivationLayer());
-            add(new LinearLayer(new JBlasTensor(DoubleMatrix.randn(2, 2)), new JBlasTensor(DoubleMatrix.randn(2))));
+            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
         }});
 
         Trainer trainer = new SimpleNNTrainer(neuralNetwork, 100, new TSS(), new SGD(0.01));

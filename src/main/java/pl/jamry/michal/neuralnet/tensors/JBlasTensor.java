@@ -15,7 +15,7 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor dot(Tensor tensor) {
-        return null;
+        return new JBlasTensor(matrix.mmul((DoubleMatrix) tensor.getData()));
     }
 
     @Override

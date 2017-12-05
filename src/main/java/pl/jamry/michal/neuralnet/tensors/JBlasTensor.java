@@ -95,7 +95,7 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor relu() {
-        return null;
+        return new JBlasTensor(DoubleMatrix.zeros(matrix.rows, matrix.columns).max(matrix));
     }
 
     @Override

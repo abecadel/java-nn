@@ -33,7 +33,7 @@ public class SimpleNNTrainer implements Trainer {
     public void train(Tensor inputs, Tensor targets) {
         for (int i = 0; i < numOfEpochs; i++) {
             Tensor predicted = neuralNetwork.forward(inputs);
-            float epochLoss = loss.loss(predicted, targets);
+            double epochLoss = loss.loss(predicted, targets);
             Tensor grad = loss.grad(predicted, targets);
             neuralNetwork.backward(grad);
             optimizer.step(neuralNetwork);

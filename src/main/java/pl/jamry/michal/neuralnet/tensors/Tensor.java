@@ -25,10 +25,10 @@ public interface Tensor {
     /**
      * Multiply tensor.
      *
-     * @param f the f
+     * @param d the d
      * @return the tensor
      */
-    Tensor multiply(Float f);
+    Tensor multiply(double d);
 
     /**
      * Multiply tensor.
@@ -41,18 +41,18 @@ public interface Tensor {
     /**
      * Divide tensor.
      *
-     * @param f the f
+     * @param d the d
      * @return the tensor
      */
-    Tensor divide(Float f);
+    Tensor divide(double d);
 
     /**
      * Add tensor.
      *
-     * @param f the f
+     * @param d the d
      * @return the tensor
      */
-    Tensor add(Float f);
+    Tensor add(double d);
 
     /**
      * Add tensor.
@@ -65,10 +65,10 @@ public interface Tensor {
     /**
      * Substract tensor.
      *
-     * @param f the f
+     * @param d the d
      * @return the tensor
      */
-    Tensor substract(Float f);
+    Tensor substract(double d);
 
     /**
      * Substract tensor.
@@ -97,10 +97,10 @@ public interface Tensor {
     /**
      * Power tensor.
      *
-     * @param f the f
+     * @param d the d
      * @return the tensor
      */
-    Tensor power(Float f);
+    Tensor power(double d);
 
     /**
      * Power tensor.
@@ -151,42 +151,42 @@ public interface Tensor {
     Tensor relu();
 
     /**
-     * Get float.
+     * Get double.
      *
-     * @return the float
+     * @return the double
      */
-    default Float get() {
+    default double get() {
         return get(0);
     }
 
     /**
-     * Get float.
+     * Get double.
      *
      * @param col the col
-     * @return the float
+     * @return the double
      */
-    default Float get(Integer col) {
+    default double get(Integer col) {
         return get(0, col);
     }
 
     /**
-     * Get float.
+     * Get double.
      *
      * @param row the row
      * @param col the col
-     * @return the float
+     * @return the double
      */
-    default Float get(Integer row, Integer col) {
+    default double get(Integer row, Integer col) {
         return ix(row, col);
     }
 
     /**
-     * Ix float.
+     * Ix double.
      *
      * @param cords the cords
-     * @return the float
+     * @return the double
      */
-    Float ix(Integer... cords);
+    double ix(Integer... cords);
 
     /**
      * Dimensions integer [ ].

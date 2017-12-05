@@ -11,9 +11,9 @@ public interface Loss {
      *
      * @param predicted the predicted
      * @param actual    the actual
-     * @return the float
+     * @return the double
      */
-    Float loss(Tensor predicted, Tensor actual);
+    double loss(Tensor predicted, Tensor actual);
 
     /**
      * Grad tensor.

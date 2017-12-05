@@ -63,12 +63,34 @@ public class JBlasTensorTest {
 
     @Test
     public void divide() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {16, 2},
+                {30, 4}
+        });
+        double d = 2;
+
+        Tensor ret = a.divide(d);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{8, 15, 1, 2};
+        assertArraysEqual(expected, returned);
     }
 
     @Test
     public void divideTensor() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+
+        Tensor b = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+
+        Tensor ret = a.divide(b);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{1, 1, 1, 1};
+        assertArraysEqual(expected, returned);
     }
 
 

@@ -2,8 +2,53 @@ package pl.jamry.michal.neuralnet.tensors;
 
 import org.jblas.DoubleMatrix;
 import org.junit.Test;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import static org.junit.Assert.assertEquals;
 
 public class JBlasTensorTest {
+
+    @Test
+    public void dot() {
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2, 3},
+                {4, 5, 6}
+        });
+
+        Tensor b = new JBlasTensor(new double[][]{
+                {7, 8},
+                {9, 10},
+                {11, 12}
+        });
+
+        Tensor ret = a.dot(b);
+        assertEquals(2, ret.dimensions()[0]);
+        assertEquals(2, ret.dimensions()[1]);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{58, 139, 64, 154};
+        assertArraysEqual(expected, returned);
+    }
+
+    @Test
+    public void multiply() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void multiplyTensor() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void divide() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void divideTensor() {
+        throw new NotImplementedException();
+    }
+
 
     @Test
     public void add() {
@@ -36,6 +81,57 @@ public class JBlasTensorTest {
         double[] expected = new double[]{2, 6, 4, 8};
         assertArraysEqual(expected, returned);
     }
+
+    @Test
+    public void substract() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void substractTensor() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void transpose() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void power() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void sum() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void sumAxis1() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void sumAxis2() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void tanh() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void sigmoid() {
+        throw new NotImplementedException();
+    }
+
+    @Test
+    public void relu() {
+        throw new NotImplementedException();
+    }
+
 
     private void assertArraysEqual(double[] a, double[] b) {
         if (a.length != b.length) {

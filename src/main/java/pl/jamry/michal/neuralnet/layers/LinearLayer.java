@@ -5,11 +5,7 @@ import pl.jamry.michal.neuralnet.tensors.Tensor;
 /**
  * The type Linear layer.
  */
-public class LinearLayer implements Layer {
-    private Tensor weights;
-    private Tensor bias;
-    private Tensor weightsGrad;
-    private Tensor biasGrad;
+public class LinearLayer extends Layer {
     private Tensor inputs;
 
     /**

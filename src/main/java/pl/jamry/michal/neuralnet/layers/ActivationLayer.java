@@ -6,7 +6,7 @@ import pl.jamry.michal.neuralnet.tensors.Tensor;
 /**
  * The type Activation layer.
  */
-public class ActivationLayer implements Layer {
+public class ActivationLayer extends Layer {
     private ActivationFunction function;
     private Tensor inputs;
 

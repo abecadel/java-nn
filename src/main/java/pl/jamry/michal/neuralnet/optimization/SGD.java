@@ -8,14 +8,14 @@ import pl.jamry.michal.neuralnet.tensors.Tensor;
  * The type Sgd.
  */
 public class SGD implements Optimizer {
-    private float learning_rate;
+    private double learning_rate;
 
     /**
      * Instantiates a new Sgd.
      *
      * @param learning_rate the learning rate
      */
-    public SGD(float learning_rate) {
+    public SGD(double learning_rate) {
         this.learning_rate = learning_rate;
     }
 

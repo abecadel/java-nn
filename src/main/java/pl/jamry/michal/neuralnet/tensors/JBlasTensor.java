@@ -10,7 +10,7 @@ public class JBlasTensor implements Tensor {
         matrix = new DoubleMatrix(doubles);
     }
 
-    private JBlasTensor(DoubleMatrix matrix) {
+    public JBlasTensor(DoubleMatrix matrix) {
         this.matrix = matrix;
     }
 

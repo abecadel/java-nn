@@ -12,6 +12,10 @@ public interface Tensor {
      */
     Tensor dot(Tensor tensor);
 
+    default Tensor mmul(Tensor tensor) {
+        return dot(tensor);
+    }
+
     /**
      * Multiply tensor.
      *

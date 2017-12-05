@@ -20,17 +20,22 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor multiply(double d) {
-        return null;
+        return new JBlasTensor(matrix.mul(d));
     }
 
     @Override
     public Tensor multiply(Tensor tensor) {
-        return null;
+        return new JBlasTensor(matrix.mul((DoubleMatrix) tensor.getData()));
     }
 
     @Override
     public Tensor divide(double d) {
-        return null;
+        return new JBlasTensor(matrix.div(d));
+    }
+
+    @Override
+    public Tensor divide(Tensor tensor) {
+        return new JBlasTensor(matrix.div((DoubleMatrix) tensor.getData()));
     }
 
     @Override
@@ -40,22 +45,22 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor add(Tensor tensor) {
-        return null;
+        return new JBlasTensor(matrix.add((DoubleMatrix) tensor.getData()));
     }
 
     @Override
     public Tensor substract(double d) {
-        return null;
+        return new JBlasTensor(matrix.sub(d));
     }
 
     @Override
     public Tensor substract(Tensor tensor) {
-        return null;
+        return new JBlasTensor(matrix.sub((DoubleMatrix) tensor.getData()));
     }
 
     @Override
     public Tensor transpose() {
-        return null;
+        return new JBlasTensor(matrix.transpose());
     }
 
     @Override
@@ -89,17 +94,17 @@ public class JBlasTensor implements Tensor {
     }
 
     @Override
-    public Integer[] dimensions() {
-        return new Integer[0];
+    public int[] dimensions() {
+        return new int[]{matrix.rows, matrix.columns};
     }
 
     @Override
-    public Tensor ones(Integer[] dimensions) {
+    public Tensor ones(int[] dimensions) {
         return null;
     }
 
     @Override
     public Object getData() {
-        return null;
+        return matrix;
     }
 }

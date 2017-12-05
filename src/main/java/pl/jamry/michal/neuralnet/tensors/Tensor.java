@@ -46,6 +46,9 @@ public interface Tensor {
      */
     Tensor divide(double d);
 
+
+    Tensor divide(Tensor tensor);
+
     /**
      * Add tensor.
      *
@@ -188,20 +191,9 @@ public interface Tensor {
      */
     double ix(Integer... cords);
 
-    /**
-     * Dimensions integer [ ].
-     *
-     * @return the integer [ ]
-     */
-    Integer[] dimensions();
+    int[] dimensions();
 
-    /**
-     * Ones tensor.
-     *
-     * @param dimensions the dimensions
-     * @return the tensor
-     */
-    Tensor ones(Integer[] dimensions);
+    Tensor ones(int[] dimensions);
 
     /**
      * Ones tensor.

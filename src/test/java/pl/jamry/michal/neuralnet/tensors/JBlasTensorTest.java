@@ -128,22 +128,67 @@ public class JBlasTensorTest {
 
     @Test
     public void substract() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+        double d = 2;
+
+        Tensor ret = a.substract(d);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{-1, 1, 0, 2};
+        assertArraysEqual(expected, returned);
     }
 
     @Test
     public void substractTensor() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+
+        Tensor b = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+
+        Tensor ret = a.substract(b);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{0, 0, 0, 0};
+        assertArraysEqual(expected, returned);
     }
 
     @Test
     public void transpose() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2, 3},
+                {4, 5, 6}
+        });
+
+        assertEquals(2, a.dimensions()[0]);
+        assertEquals(3, a.dimensions()[1]);
+
+        Tensor ret = a.transpose();
+        assertEquals(3, ret.dimensions()[0]);
+        assertEquals(2, ret.dimensions()[1]);
+
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{1, 2, 3, 4, 5, 6};
+        assertArraysEqual(expected, returned);
     }
 
     @Test
     public void power() {
-        throw new NotImplementedException();
+        Tensor a = new JBlasTensor(new double[][]{
+                {1, 2},
+                {3, 4}
+        });
+        double d = 2;
+
+        Tensor ret = a.power(d);
+        double[] returned = ((DoubleMatrix) ret.getData()).data;
+        double[] expected = new double[]{1, 9, 4, 16};
+        assertArraysEqual(expected, returned);
     }
 
     @Test

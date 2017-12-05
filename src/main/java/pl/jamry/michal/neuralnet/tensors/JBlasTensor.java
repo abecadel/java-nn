@@ -1,6 +1,7 @@
 package pl.jamry.michal.neuralnet.tensors;
 
 import org.jblas.DoubleMatrix;
+import org.jblas.MatrixFunctions;
 
 public class JBlasTensor implements Tensor {
     private DoubleMatrix matrix;
@@ -65,7 +66,7 @@ public class JBlasTensor implements Tensor {
 
     @Override
     public Tensor power(double d) {
-        return null;
+        return new JBlasTensor(MatrixFunctions.pow(new DoubleMatrix().copy(matrix), d));
     }
 
     @Override

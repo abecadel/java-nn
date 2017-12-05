@@ -1,9 +1,26 @@
 package pl.jamry.michal.neuralnet.tensors;
 
+import com.numericalmethod.suanshu.algebra.linear.matrix.doubles.matrixtype.dense.DenseMatrix;
+
 /**
  * The type Ss tensor.
  */
 public class SSTensor implements Tensor {
+    private DenseMatrix matrix;
+
+    /**
+     * Instantiates a new Ss tensor.
+     *
+     * @param data the data
+     */
+    public SSTensor(double[][] data) {
+        matrix = new DenseMatrix(data);
+    }
+
+    private SSTensor(DenseMatrix denseMatrix) {
+        this.matrix = denseMatrix;
+    }
+
     @Override
     public Tensor dot(Tensor tensor) {
         return null;
@@ -16,7 +33,8 @@ public class SSTensor implements Tensor {
 
     @Override
     public Tensor multiply(Tensor tensor) {
-        return null;
+        DenseMatrix other = (DenseMatrix) tensor.getData();
+        return new SSTensor((DenseMatrix) matrix.deepCopy().multiply(other));
     }
 
     @Override
@@ -31,7 +49,8 @@ public class SSTensor implements Tensor {
 
     @Override
     public Tensor add(Tensor tensor) {
-        return null;
+        DenseMatrix other = (DenseMatrix) tensor.getData();
+        return new SSTensor((DenseMatrix) matrix.deepCopy().add(other));
     }
 
     @Override
@@ -41,12 +60,13 @@ public class SSTensor implements Tensor {
 
     @Override
     public Tensor substract(Tensor tensor) {
-        return null;
+        DenseMatrix other = (DenseMatrix) tensor.getData();
+        return new SSTensor((DenseMatrix) matrix.deepCopy().minus(other));
     }
 
     @Override
     public Tensor transpose() {
-        return null;
+        return new SSTensor(matrix.deepCopy().t());
     }
 
     @Override
@@ -87,5 +107,10 @@ public class SSTensor implements Tensor {
     @Override
     public Tensor ones(Integer[] dimensions) {
         return null;
+    }
+
+    @Override
+    public Object getData() {
+        return matrix;
     }
 }

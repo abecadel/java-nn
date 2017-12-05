@@ -30,6 +30,7 @@ public class SimpleNNTrainer implements Trainer {
         this.optimizer = optimizer;
     }
 
+    @Override
     public void train(Tensor inputs, Tensor targets) {
         for (int i = 0; i < numOfEpochs; i++) {
             Tensor predicted = neuralNetwork.forward(inputs);

@@ -15,7 +15,22 @@ public class SSTensorTest {
     }
 
     @Test
-    public void multiply1() {
+    public void multiplyTensor() {
+        SSTensor a = new SSTensor(new double[][]{
+                {1,2,3},
+                {4,5,6},
+                {7,8,9}
+        });
+
+        SSTensor b = new SSTensor(new double[][]{
+                {2,2,2},
+                {2,2,2},
+                {2,2,2}
+        });
+
+        SSTensor ret = (SSTensor) a.multiply(b);
+
+        int k = 4;
     }
 
     @Test

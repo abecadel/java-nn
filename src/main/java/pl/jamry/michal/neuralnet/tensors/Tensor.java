@@ -211,4 +211,11 @@ public interface Tensor {
     default Tensor ones() {
         return ones(dimensions());
     }
+
+    /**
+     * Gets data.
+     *
+     * @return the data
+     */
+    Object getData();
 }

@@ -17,6 +17,8 @@ public class SimpleNNTrainerTest {
     @Test
     public void xorTooSmall() {
 
+        org.jblas.util.Random.seed(0);
+
         NeuralNetwork neuralNetwork = new NeuralNetwork(new ArrayList<Layer>() {{
             add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
             add(new TanhActivationLayer());
@@ -40,6 +42,11 @@ public class SimpleNNTrainerTest {
         });
 
         trainer.train(inputs, targets);
+
+        Tensor predictions = neuralNetwork.forward(inputs);
+
+        System.out.println(targets);
+        System.out.println(predictions);
     }
 
 }

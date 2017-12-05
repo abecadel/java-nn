@@ -99,8 +99,8 @@ public class JBlasTensor implements Tensor {
     }
 
     @Override
-    public double ix(Integer... cords) {
-        return 0;
+    public double get(Integer row, Integer col) {
+        return matrix.getRow(row).getColumn(col).get(0);
     }
 
     @Override

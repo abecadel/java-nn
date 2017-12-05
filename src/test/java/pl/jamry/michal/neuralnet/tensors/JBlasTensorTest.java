@@ -2,6 +2,7 @@ package pl.jamry.michal.neuralnet.tensors;
 
 import org.jblas.DoubleMatrix;
 import org.junit.Test;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -271,6 +272,36 @@ public class JBlasTensorTest {
         assertArraysEqual(expected, returned);
     }
 
+    @Test
+    public void getSingleVal() {
+        Tensor a = new JBlasTensor(new double[][]{
+                {11}
+        });
+
+        double ret = a.get();
+        assertEquals(11, ret, 1);
+    }
+
+    @Test
+    public void getSingleValueFromRow() {
+        Tensor a = new JBlasTensor(new double[][]{
+                {1,2,3,4,5,11}
+        });
+
+        double ret = a.get(5);
+        assertEquals(11, ret, 1);
+    }
+
+    @Test
+    public void getSingleValueFromMatrix() {
+        Tensor a = new JBlasTensor(new double[][]{
+                {-1, 2},
+                {3, -4}
+        });
+
+        double ret = a.get(1, 0);
+        assertEquals(3, ret, 1);
+    }
 
     private void assertArraysEqual(double[] a, double[] b) {
         if (a.length != b.length) {

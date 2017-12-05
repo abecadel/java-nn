@@ -12,6 +12,12 @@ public interface Tensor {
      */
     Tensor dot(Tensor tensor);
 
+    /**
+     * Mmul tensor.
+     *
+     * @param tensor the tensor
+     * @return the tensor
+     */
     default Tensor mmul(Tensor tensor) {
         return dot(tensor);
     }
@@ -51,6 +57,12 @@ public interface Tensor {
     Tensor divide(double d);
 
 
+    /**
+     * Divide tensor.
+     *
+     * @param tensor the tensor
+     * @return the tensor
+     */
     Tensor divide(Tensor tensor);
 
     /**
@@ -183,20 +195,21 @@ public interface Tensor {
      * @param col the col
      * @return the double
      */
-    default double get(Integer row, Integer col) {
-        return ix(row, col);
-    }
+    double get(Integer row, Integer col);
 
     /**
-     * Ix double.
+     * Dimensions int [ ].
      *
-     * @param cords the cords
-     * @return the double
+     * @return the int [ ]
      */
-    double ix(Integer... cords);
-
     int[] dimensions();
 
+    /**
+     * Ones tensor.
+     *
+     * @param dimensions the dimensions
+     * @return the tensor
+     */
     Tensor ones(int[] dimensions);
 
     /**

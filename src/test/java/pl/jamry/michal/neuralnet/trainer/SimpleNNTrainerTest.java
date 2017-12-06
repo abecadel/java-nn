@@ -15,11 +15,13 @@ import java.util.ArrayList;
 public class SimpleNNTrainerTest {
 
     @Test
-    public void xorTooSmall() {
+    public void xorModelling() {
 
         org.jblas.util.Random.seed(0);
 
         NeuralNetwork neuralNetwork = new NeuralNetwork(new ArrayList<Layer>() {{
+            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
+            add(new TanhActivationLayer());
             add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
             add(new TanhActivationLayer());
             add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));

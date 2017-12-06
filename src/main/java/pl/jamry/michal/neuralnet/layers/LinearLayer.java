@@ -27,7 +27,7 @@ public class LinearLayer extends Layer {
 
     @Override
     public Tensor backward(Tensor grad) {
-        biasGrad = grad.sum();
+        biasGrad = grad.sum(0);
         weightsGrad = inputs.T().dot(grad);
         return grad.dot(weights.T());
     }

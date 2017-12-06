@@ -140,13 +140,11 @@ public interface Tensor {
     Tensor sum(int axis);
 
     /**
-     * Sum tensor.
+     * Sum double.
      *
-     * @return the tensor
+     * @return the double
      */
-    default Tensor sum() {
-        return sum(0);
-    }
+    double sum();
 
     /**
      * Tanh tensor.

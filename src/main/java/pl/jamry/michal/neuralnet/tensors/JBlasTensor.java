@@ -28,11 +28,11 @@ public class JBlasTensor implements Tensor {
     }
 
     public static Tensor randr(int size) {
-        return new JBlasTensor(DoubleMatrix.randn(size));
+        return new JBlasTensor(DoubleMatrix.ones(size));
     }
 
     public static Tensor randr(int rows, int cols) {
-        return new JBlasTensor(DoubleMatrix.randn(rows, cols));
+        return new JBlasTensor(DoubleMatrix.ones(rows, cols));
     }
 
     @Override
@@ -100,6 +100,11 @@ public class JBlasTensor implements Tensor {
     @Override
     public Tensor power(double d) {
         return new JBlasTensor(MatrixFunctions.pow(new DoubleMatrix().copy(matrix), d));
+    }
+
+    @Override
+    public double sum() {
+        return matrix.sum();
     }
 
     @Override

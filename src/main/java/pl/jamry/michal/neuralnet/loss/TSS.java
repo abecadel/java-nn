@@ -8,7 +8,7 @@ import pl.jamry.michal.neuralnet.tensors.Tensor;
 public class TSS implements Loss {
     @Override
     public double loss(Tensor predicted, Tensor actual) {
-        return predicted.substract(actual).power(2).sum().get();
+        return predicted.substract(actual).power(2).sum();
     }
 
     @Override

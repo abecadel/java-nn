@@ -199,10 +199,8 @@ public class JBlasTensorTest {
                 {5, 6}
         });
 
-        Tensor ret = a.sum();
-        double[] returned = ((DoubleMatrix) ret.getData()).data;
-        double[] expected = new double[]{9, 12};
-        assertArraysEqual(expected, returned);
+        double ret = a.sum();
+        assertEquals(21, ret,1);
     }
 
     @Test

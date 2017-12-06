@@ -25,7 +25,7 @@ public class SimpleNNTrainerTest {
             add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
         }});
 
-        Trainer trainer = new SimpleNNTrainer(neuralNetwork, 100, new TSS(), new SGD(0.01));
+        Trainer trainer = new SimpleNNTrainer(neuralNetwork, 5000, new TSS(), new SGD(0.01));
 
         Tensor inputs = new JBlasTensor(new double[][]{
                 {0, 0},

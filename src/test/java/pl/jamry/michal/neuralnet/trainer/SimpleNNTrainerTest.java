@@ -54,6 +54,20 @@ public class SimpleNNTrainerTest {
     @Test
     public void fizzBuzz() {
         org.jblas.util.Random.seed(0);
+
+        NeuralNetwork neuralNetwork = new NeuralNetwork(new ArrayList<Layer>() {{
+            add(new LinearLayer(JBlasTensor.randr(10,50), JBlasTensor.randr(50)));
+            add(new TanhActivationLayer());
+            add(new LinearLayer(JBlasTensor.randr(10, 50), JBlasTensor.randr(50)));
+        }});
+
+        Tensor inputs = new JBlasTensor(createInputs(101,1024));
+        Tensor targets = new JBlasTensor(createTargets(101,1024));
+
+        Trainer trainer = new SimpleNNTrainer(neuralNetwork, 5000, new TSS(), new SGD(0.001));
+        trainer.train(inputs, targets);
+        Tensor predictions = neuralNetwork.forward(inputs);
+
     }
 
     @Test

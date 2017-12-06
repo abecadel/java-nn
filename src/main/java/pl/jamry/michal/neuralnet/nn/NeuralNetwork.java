@@ -43,7 +43,7 @@ public class NeuralNetwork {
     public Tensor backward(Tensor grad) {
         for (int i = layers.size() - 1; i >= 0; i--) {
             Layer layer = layers.get(i);
-            layer.backward(grad);
+            grad = layer.backward(grad);
         }
 
         return grad;

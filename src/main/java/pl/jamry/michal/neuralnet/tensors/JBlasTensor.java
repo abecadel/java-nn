@@ -27,10 +27,23 @@ public class JBlasTensor implements Tensor {
         this.matrix = matrix;
     }
 
+    /**
+     * Randr tensor.
+     *
+     * @param size the size
+     * @return the tensor
+     */
     public static Tensor randr(int size) {
         return new JBlasTensor(DoubleMatrix.randn(size));
     }
 
+    /**
+     * Randr tensor.
+     *
+     * @param rows the rows
+     * @param cols the cols
+     * @return the tensor
+     */
     public static Tensor randr(int rows, int cols) {
         return new JBlasTensor(DoubleMatrix.randn(rows, cols));
     }

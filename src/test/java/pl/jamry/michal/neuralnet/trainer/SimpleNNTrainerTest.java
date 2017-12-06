@@ -51,4 +51,55 @@ public class SimpleNNTrainerTest {
         System.out.println(predictions);
     }
 
+    @Test
+    public void fizzBuzz() {
+        org.jblas.util.Random.seed(0);
+    }
+
+    @Test
+    public void testEncoding() {
+        assertArraysEqual(new double[]{1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, binEncode(1));
+        assertArraysEqual(new double[]{0, 1, 0, 0, 0, 0, 0, 0, 0, 0}, binEncode(2));
+        assertArraysEqual(new double[]{1, 1, 0, 0, 0, 0, 0, 0, 0, 0}, binEncode(3));
+        assertArraysEqual(new double[]{0, 0, 1, 0, 0, 0, 0, 0, 0, 0}, binEncode(4));
+        assertArraysEqual(new double[]{1, 0, 1, 0, 0, 0, 0, 0, 0, 0}, binEncode(5));
+        assertArraysEqual(new double[]{0, 1, 1, 0, 0, 0, 0, 0, 0, 0}, binEncode(6));
+        assertArraysEqual(new double[]{1, 1, 1, 0, 0, 0, 0, 0, 0, 0}, binEncode(7));
+        assertArraysEqual(new double[]{0, 0, 0, 1, 0, 0, 0, 0, 0, 0}, binEncode(8));
+        assertArraysEqual(new double[]{1, 0, 0, 1, 0, 0, 0, 0, 0, 0}, binEncode(9));
+        assertArraysEqual(new double[]{0, 1, 0, 1, 0, 0, 0, 0, 0, 0}, binEncode(10));
+    }
+
+    private double[] binEncode(int x) {
+        double[] arr = new double[10];
+        for (int i = 0; i < 10; i++) {
+            arr[i] = x >> i & 1;
+        }
+        return arr;
+    }
+
+
+    private void assertArraysEqual(double[] a, double[] b) {
+        if (a.length != b.length) {
+            throw new RuntimeException("Arrays are of a different length");
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            double left = a[i];
+            double right = b[i];
+
+            if (left != right) {
+                throw new RuntimeException("Arrays are not equal " + arr2str(a) + " != " + arr2str(b));
+            }
+        }
+    }
+
+    private String arr2str(double[] doubles) {
+        StringBuilder sb = new StringBuilder().append("[");
+        for (double d : doubles) {
+            sb.append(d).append(", ");
+        }
+
+        return sb.append("]").toString();
+    }
 }

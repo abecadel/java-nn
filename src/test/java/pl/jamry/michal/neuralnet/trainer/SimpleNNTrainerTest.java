@@ -70,6 +70,54 @@ public class SimpleNNTrainerTest {
         assertArraysEqual(new double[]{0, 1, 0, 1, 0, 0, 0, 0, 0, 0}, binEncode(10));
     }
 
+    @Test
+    public void createTargets(){
+        double[][] a = createTargets(101,1024);
+
+        System.out.println(arr2str(a[0]));
+        System.out.println(arr2str(a[1024-101-1]));
+    }
+
+    private double[][] createTargets(int from, int to){
+        double[][] arr = new double[to - from][];
+
+        for (int i = from, pos = 0; i < to; i++, pos++) {
+            arr[pos] = fizzBuzzEncode(i);
+        }
+
+        return arr;
+    }
+
+    @Test
+    public void createInputs(){
+        double[][] a = createInputs(101,1024);
+
+        System.out.println(arr2str(a[0]));
+        System.out.println(arr2str(a[1024-101-1]));
+    }
+
+    private double[][] createInputs(int from, int to){
+        double[][] arr = new double[to - from][];
+
+        for (int i = from, pos = 0; i < to; i++, pos++) {
+            arr[pos] = binEncode(i);
+        }
+
+        return arr;
+    }
+
+    private double[] fizzBuzzEncode(int x) {
+        if (x % 15 == 0) {
+            return new double[]{0, 0, 0, 1};
+        } else if (x % 5 == 0) {
+            return new double[]{0, 0, 1, 0};
+        } else if (x % 3 == 0) {
+            return new double[]{0, 1, 0, 0};
+        } else {
+            return new double[]{1, 0, 0, 0};
+        }
+    }
+
     private double[] binEncode(int x) {
         double[] arr = new double[10];
         for (int i = 0; i < 10; i++) {

@@ -1,6 +1,7 @@
 package pl.jamry.michal.neuralnet.example.mnist;
 
 import org.junit.Before;
+import org.junit.Test;
 import pl.jamry.michal.neuralnet.tensors.JBlasTensor;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
@@ -15,6 +16,11 @@ import java.util.stream.Collectors;
 public class ReaderExample {
     Tensor x;
     Tensor y;
+
+    @Test
+    public void testOne() {
+        //TODO
+    }
 
     @Before
     public void prepareData() throws IOException, URISyntaxException {

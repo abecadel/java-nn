@@ -51,7 +51,7 @@ public class SimpleNNTrainerTest {
         System.out.println(predictions);
     }
 
-    @Test
+//    @Test
     public void fizzBuzz() {
         org.jblas.util.Random.seed(0);
 

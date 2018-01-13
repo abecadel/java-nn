@@ -1,11 +1,11 @@
-package pl.jamry.michal.neuralnet.layers.activation;
+package pl.jamry.michal.neuralnet.activation;
 
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
 /**
  * The type Tanh activation layer.
  */
-public class TanhActivationLayer extends ActivationLayer {
+public class TanhActivation implements ActivationFunction {
 
     @Override
     public Tensor call(Tensor tensor) {

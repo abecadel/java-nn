@@ -1,17 +1,12 @@
 package pl.jamry.michal.neuralnet.trainer;
 
 import org.junit.Test;
-import pl.jamry.michal.neuralnet.layers.Layer;
-import pl.jamry.michal.neuralnet.layers.LinearLayer;
-import pl.jamry.michal.neuralnet.layers.activation.TanhActivationLayer;
 import pl.jamry.michal.neuralnet.loss.TSS;
 import pl.jamry.michal.neuralnet.models.Model;
 import pl.jamry.michal.neuralnet.models.SequentialModel;
 import pl.jamry.michal.neuralnet.optimization.SGD;
 import pl.jamry.michal.neuralnet.tensors.JBlasTensor;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
-
-import java.util.ArrayList;
 
 public class SimpleNNTrainerTest {
 
@@ -21,7 +16,7 @@ public class SimpleNNTrainerTest {
         org.jblas.util.Random.seed(0);
 
         Model model = new SequentialModel();
-//        model.addLayer(new LinearLayer(2));
+//        model.addLayer(new LinearLayer(2, 1));
 //            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
 //            add(new TanhActivationLayer());
 //            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));

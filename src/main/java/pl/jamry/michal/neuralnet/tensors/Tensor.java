@@ -225,4 +225,11 @@ public interface Tensor {
      * @return the data
      */
     Object getData();
+
+    /**
+     * Copy tensor tensor.
+     *
+     * @return the tensor
+     */
+    Tensor copyTensor();
 }

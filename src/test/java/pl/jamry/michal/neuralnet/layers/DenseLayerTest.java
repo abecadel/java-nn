@@ -2,6 +2,7 @@ package pl.jamry.michal.neuralnet.layers;
 
 import org.junit.Test;
 import pl.jamry.michal.neuralnet.activation.LinearActivation;
+import pl.jamry.michal.neuralnet.activation.TanhActivation;
 import pl.jamry.michal.neuralnet.tensors.JBlasTensor;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
@@ -17,10 +18,11 @@ public class DenseLayerTest {
                 {1, 0}
         });
 
-        Layer layer = new DenseLayer(1, 2, new LinearActivation());
+        Layer layer = new DenseLayer(1, 2, new TanhActivation());
 
         Tensor ret = layer.forward(inputs);
 
+        assertEquals(0.99376d, ret.get(), 0.000001);
 
     }
 }

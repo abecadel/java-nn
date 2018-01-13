@@ -62,14 +62,14 @@ public class JBlasTensor implements Tensor {
         DoubleMatrix other = (DoubleMatrix) tensor.getData();
 
         //simple column broadcasting
-        if (matrix.columns != other.columns && other.columns == 1) {
-            DoubleMatrix broadcastedOther = new DoubleMatrix().copy(other);
-            for (int i = 0; i <= matrix.columns; i++) {
-                broadcastedOther = DoubleMatrix.concatHorizontally(broadcastedOther, other);
-            }
-
-            other = broadcastedOther;
-        }
+//        if (matrix.columns != other.columns && other.columns == 1) {
+//            DoubleMatrix broadcastedOther = new DoubleMatrix().copy(other);
+//            for (int i = 0; i <= matrix.columns; i++) {
+//                broadcastedOther = DoubleMatrix.concatHorizontally(broadcastedOther, other);
+//            }
+//
+//            other = broadcastedOther;
+//        }
 
         return new JBlasTensor(matrix.add(other));
     }

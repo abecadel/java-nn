@@ -1,8 +1,6 @@
 package pl.jamry.michal.neuralnet.models;
 
 import pl.jamry.michal.neuralnet.layers.Layer;
-import pl.jamry.michal.neuralnet.loss.Loss;
-import pl.jamry.michal.neuralnet.optimization.Optimizer;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
 import java.util.List;
@@ -31,6 +29,7 @@ public class SequentialModel extends Model {
         return grad;
     }
 
+    @Override
     public List<Layer> getLayers() {
         return layers;
     }
@@ -39,19 +38,21 @@ public class SequentialModel extends Model {
         layers.add(layer);
     }
 
-    @Override
-    public void compile(Loss loss, Optimizer optimizer) {
-        //TODO
-    }
 
-    @Override
-    public void fit(Tensor data, Tensor labels, int epochs, int batchSize) {
-        //TODO
+    public void fit(Tensor inputs, Tensor targets, int epochs, int batchSize) {
+        for (int i = 0; i < epochs; i++) {
+            Tensor predicted = forward(inputs);
+            double epochLoss = loss.loss(predicted, targets);
+            Tensor grad = loss.grad(predicted, targets);
+            backward(grad);
+            optimizer.step(this);
+
+            System.out.println("epoch:" + i + " loss:" + epochLoss);
+        }
     }
 
     @Override
     public Tensor predict(Tensor data) {
-        //TODO
-        return null;
+        return forward(data);
     }
 }

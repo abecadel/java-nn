@@ -3,10 +3,15 @@ package pl.jamry.michal.neuralnet.models;
 import pl.jamry.michal.neuralnet.layers.Layer;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SequentialModel extends Model {
     private List<Layer> layers;
+
+    public SequentialModel() {
+        layers = new ArrayList<>();
+    }
 
     public SequentialModel(List<Layer> layers) {
         this.layers = layers;
@@ -34,6 +39,7 @@ public class SequentialModel extends Model {
         return layers;
     }
 
+    @Override
     public void addLayer(Layer layer) {
         layers.add(layer);
     }

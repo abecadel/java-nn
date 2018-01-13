@@ -25,4 +25,6 @@ public abstract class Model {
     public abstract Tensor predict(Tensor data);
 
     public abstract List<Layer> getLayers();
+
+    public abstract void addLayer(Layer layer);
 }

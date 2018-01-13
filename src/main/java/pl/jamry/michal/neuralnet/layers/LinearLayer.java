@@ -4,17 +4,14 @@ import pl.jamry.michal.neuralnet.tensors.Tensor;
 
 /**
  * The type Linear layer.
+ *
+ * This class implements a very sophisticated algorithm which
+ * has something to do with polynomial \(ax^2 + bx + c\).
  */
 public class LinearLayer extends Layer {
     private Tensor inputs;
 
-    /**
-     * Instantiates a new Linear layer.
-     *
-     * @param weights the weights
-     * @param bias    the bias
-     */
-    public LinearLayer(Tensor weights, Tensor bias) {
+    public LinearLayer(int units, int input_dims) {
         this.weights = weights;
         this.bias = bias;
     }

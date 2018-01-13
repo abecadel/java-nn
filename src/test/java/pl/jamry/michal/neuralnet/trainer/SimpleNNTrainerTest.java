@@ -20,13 +20,14 @@ public class SimpleNNTrainerTest {
 
         org.jblas.util.Random.seed(0);
 
-        Model model = new SequentialModel(new ArrayList<Layer>() {{
-            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
-            add(new TanhActivationLayer());
-            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
-            add(new TanhActivationLayer());
-            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
-        }});
+        Model model = new SequentialModel();
+//        model.addLayer(new LinearLayer(2));
+//            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
+//            add(new TanhActivationLayer());
+//            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
+//            add(new TanhActivationLayer());
+//            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
+//        }});
 
         model.compile(new TSS(), new SGD(0.01));
 

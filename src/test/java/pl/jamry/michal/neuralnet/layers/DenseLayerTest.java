@@ -23,6 +23,5 @@ public class DenseLayerTest {
         Tensor ret = layer.forward(inputs);
 
         assertEquals(0.99376d, ret.get(), 0.000001);
-
     }
 }

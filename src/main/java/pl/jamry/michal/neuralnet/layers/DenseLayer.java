@@ -16,7 +16,7 @@ public class DenseLayer extends Layer {
 
     public DenseLayer(int units, int input_dims, ActivationFunction activationFunction) {
         this.weights = TensorFactory.createRandomTensor(input_dims, units);
-        this.bias = TensorFactory.createRandomTensor(1, units);
+        this.bias = TensorFactory.createRandomTensor(units, 1);
         this.activationFunction = activationFunction;
     }
 

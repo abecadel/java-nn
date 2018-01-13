@@ -19,8 +19,8 @@ public class SimpleNNTrainerTest {
         org.jblas.util.Random.seed(0);
 
         Model model = new SequentialModel();
-        model.addLayer(new DenseLayer(8, 2, new TanhActivation()));
-        model.addLayer(new DenseLayer(2, 8, new SigmoidActivation()));
+        model.addLayer(new DenseLayer(4, 2, new TanhActivation()));
+        model.addLayer(new DenseLayer(2, 2, new SigmoidActivation()));
 
         model.compile(new TSS(), new SGD(0.01));
 

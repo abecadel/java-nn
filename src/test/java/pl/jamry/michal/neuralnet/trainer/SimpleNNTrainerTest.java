@@ -3,9 +3,9 @@ package pl.jamry.michal.neuralnet.trainer;
 import org.junit.Test;
 import pl.jamry.michal.neuralnet.layers.Layer;
 import pl.jamry.michal.neuralnet.layers.LinearLayer;
-import pl.jamry.michal.neuralnet.layers.TanhActivationLayer;
+import pl.jamry.michal.neuralnet.layers.activation.TanhActivationLayer;
 import pl.jamry.michal.neuralnet.loss.TSS;
-import pl.jamry.michal.neuralnet.nn.NeuralNetwork;
+import pl.jamry.michal.neuralnet.models.SequentialModel;
 import pl.jamry.michal.neuralnet.optimization.SGD;
 import pl.jamry.michal.neuralnet.tensors.JBlasTensor;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
@@ -19,7 +19,7 @@ public class SimpleNNTrainerTest {
 
         org.jblas.util.Random.seed(0);
 
-        NeuralNetwork neuralNetwork = new NeuralNetwork(new ArrayList<Layer>() {{
+        SequentialModel sequentialModel = new SequentialModel(new ArrayList<Layer>() {{
             add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
             add(new TanhActivationLayer());
             add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
@@ -27,7 +27,7 @@ public class SimpleNNTrainerTest {
             add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
         }});
 
-        Trainer trainer = new SimpleNNTrainer(neuralNetwork, 5000, new TSS(), new SGD(0.01));
+        Trainer trainer = new SimpleNNTrainer(sequentialModel, 5000, new TSS(), new SGD(0.01));
 
         Tensor inputs = new JBlasTensor(new double[][]{
                 {0, 0},
@@ -45,7 +45,7 @@ public class SimpleNNTrainerTest {
 
         trainer.train(inputs, targets);
 
-        Tensor predictions = neuralNetwork.forward(inputs);
+        Tensor predictions = sequentialModel.forward(inputs);
 
         System.out.println(targets);
         System.out.println(predictions);
@@ -55,7 +55,7 @@ public class SimpleNNTrainerTest {
     public void fizzBuzz() {
         org.jblas.util.Random.seed(0);
 
-        NeuralNetwork neuralNetwork = new NeuralNetwork(new ArrayList<Layer>() {{
+        SequentialModel sequentialModel = new SequentialModel(new ArrayList<Layer>() {{
             add(new LinearLayer(JBlasTensor.randr(10,50), JBlasTensor.randr(50)));
             add(new TanhActivationLayer());
             add(new LinearLayer(JBlasTensor.randr(10, 50), JBlasTensor.randr(50)));
@@ -64,9 +64,9 @@ public class SimpleNNTrainerTest {
         Tensor inputs = new JBlasTensor(createInputs(101,1024));
         Tensor targets = new JBlasTensor(createTargets(101,1024));
 
-        Trainer trainer = new SimpleNNTrainer(neuralNetwork, 5000, new TSS(), new SGD(0.001));
+        Trainer trainer = new SimpleNNTrainer(sequentialModel, 5000, new TSS(), new SGD(0.001));
         trainer.train(inputs, targets);
-        Tensor predictions = neuralNetwork.forward(inputs);
+        Tensor predictions = sequentialModel.forward(inputs);
 
     }
 

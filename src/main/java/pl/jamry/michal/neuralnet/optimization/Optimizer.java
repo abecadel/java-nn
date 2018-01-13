@@ -1,6 +1,6 @@
 package pl.jamry.michal.neuralnet.optimization;
 
-import pl.jamry.michal.neuralnet.nn.NeuralNetwork;
+import pl.jamry.michal.neuralnet.models.SequentialModel;
 
 /**
  * The interface Optimizer.
@@ -9,7 +9,7 @@ public interface Optimizer {
     /**
      * Step.
      *
-     * @param neuralNetwork the neural network
+     * @param sequentialModel the neural network
      */
-    void step(NeuralNetwork neuralNetwork);
+    void step(SequentialModel sequentialModel);
 }

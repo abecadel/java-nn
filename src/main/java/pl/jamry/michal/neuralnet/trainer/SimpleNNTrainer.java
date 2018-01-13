@@ -1,7 +1,7 @@
 package pl.jamry.michal.neuralnet.trainer;
 
 import pl.jamry.michal.neuralnet.loss.Loss;
-import pl.jamry.michal.neuralnet.nn.NeuralNetwork;
+import pl.jamry.michal.neuralnet.models.SequentialModel;
 import pl.jamry.michal.neuralnet.optimization.Optimizer;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
@@ -10,7 +10,7 @@ import pl.jamry.michal.neuralnet.tensors.Tensor;
  */
 public class SimpleNNTrainer implements Trainer {
 
-    private NeuralNetwork neuralNetwork;
+    private SequentialModel sequentialModel;
     private int numOfEpochs;
     private Loss loss;
     private Optimizer optimizer;
@@ -18,13 +18,13 @@ public class SimpleNNTrainer implements Trainer {
     /**
      * Instantiates a new Simple nn trainer.
      *
-     * @param neuralNetwork the neural network
+     * @param sequentialModel the neural network
      * @param numOfEpochs   the num of epochs
      * @param loss          the loss
      * @param optimizer     the optimizer
      */
-    public SimpleNNTrainer(NeuralNetwork neuralNetwork, int numOfEpochs, Loss loss, Optimizer optimizer) {
-        this.neuralNetwork = neuralNetwork;
+    public SimpleNNTrainer(SequentialModel sequentialModel, int numOfEpochs, Loss loss, Optimizer optimizer) {
+        this.sequentialModel = sequentialModel;
         this.numOfEpochs = numOfEpochs;
         this.loss = loss;
         this.optimizer = optimizer;
@@ -33,11 +33,11 @@ public class SimpleNNTrainer implements Trainer {
     @Override
     public void train(Tensor inputs, Tensor targets) {
         for (int i = 0; i < numOfEpochs; i++) {
-            Tensor predicted = neuralNetwork.forward(inputs);
+            Tensor predicted = sequentialModel.forward(inputs);
             double epochLoss = loss.loss(predicted, targets);
             Tensor grad = loss.grad(predicted, targets);
-            neuralNetwork.backward(grad);
-            optimizer.step(neuralNetwork);
+            sequentialModel.backward(grad);
+            optimizer.step(sequentialModel);
 
             System.out.println("epoch:" + i + " loss:" + epochLoss);
         }

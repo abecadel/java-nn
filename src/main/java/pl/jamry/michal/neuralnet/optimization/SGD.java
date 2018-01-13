@@ -1,7 +1,7 @@
 package pl.jamry.michal.neuralnet.optimization;
 
 import pl.jamry.michal.neuralnet.layers.Layer;
-import pl.jamry.michal.neuralnet.nn.NeuralNetwork;
+import pl.jamry.michal.neuralnet.models.SequentialModel;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
 /**
@@ -20,8 +20,8 @@ public class SGD implements Optimizer {
     }
 
     @Override
-    public void step(NeuralNetwork neuralNetwork) {
-        for (Layer layer : neuralNetwork.getLayers()) {
+    public void step(SequentialModel sequentialModel) {
+        for (Layer layer : sequentialModel.getLayers()) {
             Tensor weights = layer.getWeights();
             Tensor weightsGrads = layer.getWeightsGrad();
             Tensor biases = layer.getBias();

@@ -1,31 +1,19 @@
-package pl.jamry.michal.neuralnet.nn;
+package pl.jamry.michal.neuralnet.models;
 
 import pl.jamry.michal.neuralnet.layers.Layer;
+import pl.jamry.michal.neuralnet.loss.Loss;
+import pl.jamry.michal.neuralnet.optimization.Optimizer;
 import pl.jamry.michal.neuralnet.tensors.Tensor;
 
 import java.util.List;
 
-/**
- * The type Neural network.
- */
-public class NeuralNetwork {
+public class SequentialModel extends Model {
     private List<Layer> layers;
 
-    /**
-     * Instantiates a new Neural network.
-     *
-     * @param layers the layers
-     */
-    public NeuralNetwork(List<Layer> layers) {
+    public SequentialModel(List<Layer> layers) {
         this.layers = layers;
     }
 
-    /**
-     * Forward tensor.
-     *
-     * @param input the input
-     * @return the tensor
-     */
     public Tensor forward(Tensor input) {
         for (Layer layer : layers) {
             input = layer.forward(input);
@@ -34,12 +22,6 @@ public class NeuralNetwork {
         return input;
     }
 
-    /**
-     * Backward tensor.
-     *
-     * @param grad the grad
-     * @return the tensor
-     */
     public Tensor backward(Tensor grad) {
         for (int i = layers.size() - 1; i >= 0; i--) {
             Layer layer = layers.get(i);
@@ -49,12 +31,27 @@ public class NeuralNetwork {
         return grad;
     }
 
-    /**
-     * Gets layers.
-     *
-     * @return the layers
-     */
     public List<Layer> getLayers() {
         return layers;
+    }
+
+    public void addLayer(Layer layer) {
+        layers.add(layer);
+    }
+
+    @Override
+    public void compile(Loss loss, Optimizer optimizer) {
+        //TODO
+    }
+
+    @Override
+    public void fit(Tensor data, Tensor labels, int epochs, int batchSize) {
+        //TODO
+    }
+
+    @Override
+    public Tensor predict(Tensor data) {
+        //TODO
+        return null;
     }
 }

@@ -18,10 +18,6 @@ public abstract class Model {
 
     public abstract void fit(Tensor inputs, Tensor targets, int epochs, int batchSize);
 
-    public void fit(Tensor inputs, Tensor targets) {
-        fit(inputs, targets, 1000, 32);
-    }
-
     public abstract Tensor predict(Tensor data);
 
     public abstract List<Layer> getLayers();

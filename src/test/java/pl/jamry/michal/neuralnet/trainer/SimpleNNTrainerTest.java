@@ -1,6 +1,9 @@
 package pl.jamry.michal.neuralnet.trainer;
 
 import org.junit.Test;
+import pl.jamry.michal.neuralnet.activation.SigmoidActivation;
+import pl.jamry.michal.neuralnet.activation.TanhActivation;
+import pl.jamry.michal.neuralnet.layers.DenseLayer;
 import pl.jamry.michal.neuralnet.loss.TSS;
 import pl.jamry.michal.neuralnet.models.Model;
 import pl.jamry.michal.neuralnet.models.SequentialModel;
@@ -11,18 +14,13 @@ import pl.jamry.michal.neuralnet.tensors.Tensor;
 public class SimpleNNTrainerTest {
 
     @Test
-    public void xorModelling() {
+    public void xorTanh() {
 
         org.jblas.util.Random.seed(0);
 
         Model model = new SequentialModel();
-//        model.addLayer(new LinearLayer(2, 1));
-//            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
-//            add(new TanhActivationLayer());
-//            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
-//            add(new TanhActivationLayer());
-//            add(new LinearLayer(JBlasTensor.randr(2, 2), JBlasTensor.randr(2)));
-//        }});
+        model.addLayer(new DenseLayer(8, 2, new TanhActivation()));
+        model.addLayer(new DenseLayer(2, 8, new SigmoidActivation()));
 
         model.compile(new TSS(), new SGD(0.01));
 
@@ -40,12 +38,18 @@ public class SimpleNNTrainerTest {
                 {1, 0}
         });
 
-        model.fit(inputs, targets);
+        model.fit(inputs, targets, 1000, 1);
 
         Tensor predictions = model.predict(inputs);
 
         System.out.println(targets);
         System.out.println(predictions);
+    }
+
+
+    @Test
+    public void xorRelu() {
+
     }
 
 }

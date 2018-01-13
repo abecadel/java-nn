@@ -4,6 +4,10 @@ package pl.jamry.michal.neuralnet.tensors;
  * The interface Tensor.
  */
 public interface Tensor {
+
+    int AXIS_0 = 0;
+    int AXIS_1 = 1;
+
     /**
      * Dot tensor.
      *
